@@ -1,6 +1,6 @@
 {
   "name": "decompress-tarxz",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "decompress tar.xz plugin",
   "license": "MIT",
   "repository": "kevva/decompress-tarxz",
