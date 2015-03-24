@@ -1,0 +1,44 @@
+{
+  "name": "decompress-tarxz",
+  "version": "1.0.0",
+  "description": "decompress tar.xz plugin",
+  "license": "MIT",
+  "repository": "kevva/decompress-tarxz",
+  "author": {
+    "name": "Kevin Mårtensson",
+    "email": "kevinmartensson@gmail.com",
+    "url": "https://github.com/kevva"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "decompress",
+    "decompressplugin",
+    "extract",
+    "gulpplugin",
+    "tar",
+    "tarxz",
+    "xz"
+  ],
+  "dependencies": {
+    "is-xz": "^1.0.0",
+    "lzma": "^2.0.5",
+    "object-assign": "^2.0.0",
+    "strip-dirs": "^1.0.0",
+    "tar-stream": "^1.1.1",
+    "through2": "^0.6.1",
+    "vinyl": "^0.4.3"
+  },
+  "devDependencies": {
+    "ava": "^0.0.4",
+    "is-jpg": "^1.0.0",
+    "vinyl-file": "^1.1.0"
+  }
+}
