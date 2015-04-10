@@ -14,29 +14,26 @@ $ npm install --save decompress-tarxz
 
 ```js
 var Decompress = require('decompress');
-var tarXz = require('decompress-tarxz');
+var decompressTarxz = require('decompress-tarxz');
 
-var decompress = new Decompress()
+new Decompress()
 	.src('foo.tar.xz')
 	.dest('dest')
-	.use(tarXz({strip: 1}));
-
-decompress.run(function (err, files) {
-	console.log('Files extracted successfully!'); 
-});
+	.use(decompressTarxz({strip: 1}))
+	.run();
 ```
 
 You can also use this plugin with [gulp](http://gulpjs.com):
 
 ```js
+var decompressTarxz = require('decompress-tarxz');
 var gulp = require('gulp');
-var tarXz = require('decompress-tarxz');
 var vinylAssign = require('vinyl-assign');
 
 gulp.task('default', function () {
 	return gulp.src('foo.tar.xz')
 		.pipe(vinylAssign({extract: true}))
-		.pipe(tarXz({strip: 1}))
+		.pipe(decompressTarxz({strip: 1}))
 		.pipe(gulp.dest('dest'));
 });
 ```
@@ -44,7 +41,7 @@ gulp.task('default', function () {
 
 ## API
 
-### tarXz(options)
+### decompressTarxz(options)
 
 #### options.strip
 
