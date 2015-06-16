@@ -1,5 +1,4 @@
 'use strict';
-
 var fs = require('fs');
 var isXz = require('is-xz');
 var lzmaNative = require('lzma-native');
