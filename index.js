@@ -14,7 +14,7 @@ module.exports = function (opts) {
 
 	return through.obj(function (file, enc, cb) {
 		var extract = tarStream.extract();
-		var xz = lzmaNative.createStream('autoDecoder');
+		var xz = lzmaNative.createDecompressor();
 		var self = this;
 
 		if (file.isNull()) {
