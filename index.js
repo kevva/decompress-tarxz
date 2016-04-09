@@ -1,6 +1,5 @@
 'use strict';
 var fs = require('fs');
-var isXz = require('is-xz');
 var lzmaNative = require('lzma-native');
 var objectAssign = require('object-assign');
 var stripDirs = require('strip-dirs');
@@ -14,7 +13,7 @@ module.exports = function (opts) {
 
 	return through.obj(function (file, enc, cb) {
 		var extract = tarStream.extract();
-		var xz = lzmaNative.createStream('autoDecoder');
+		var xz = lzmaNative.createDecompressor();
 		var self = this;
 
 		if (file.isNull()) {
@@ -27,7 +26,7 @@ module.exports = function (opts) {
 			return;
 		}
 
-		if (!file.extract || !isXz(file.contents)) {
+		if (!file.extract || !lzmaNative.isXZ(file.contents)) {
 			cb(null, file);
 			return;
 		}
