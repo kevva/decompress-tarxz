@@ -1,4 +1,4 @@
-# decompress-tarxz [![Build Status](http://img.shields.io/travis/kevva/decompress-tarxz.svg?style=flat)](https://travis-ci.org/kevva/decompress-tarxz)
+# decompress-tarxz [![Build Status](https://travis-ci.org/kevva/decompress-tarxz.svg?branch=master)](https://travis-ci.org/kevva/decompress-tarxz)
 
 > tar.xz decompress plugin
 
@@ -13,42 +13,28 @@ $ npm install --save decompress-tarxz
 ## Usage
 
 ```js
-var Decompress = require('decompress');
-var decompressTarxz = require('decompress-tarxz');
+const decompress = require('decompress');
+const decompressTarxz = require('decompress-tarxz');
 
-new Decompress()
-	.src('foo.tar.xz')
-	.dest('dest')
-	.use(decompressTarxz({strip: 1}))
-	.run();
-```
-
-You can also use this plugin with [gulp](http://gulpjs.com):
-
-```js
-var decompressTarxz = require('decompress-tarxz');
-var gulp = require('gulp');
-var vinylAssign = require('vinyl-assign');
-
-gulp.task('default', function () {
-	return gulp.src('foo.tar.xz')
-		.pipe(vinylAssign({extract: true}))
-		.pipe(decompressTarxz({strip: 1}))
-		.pipe(gulp.dest('dest'));
+decompress('unicorn.tar.xz', 'dist', {
+	plugins: [
+		decompressTarxz()
+	]
+}).then(() => {
+	console.log('Files decompressed');
 });
 ```
 
 
 ## API
 
-### decompressTarxz(options)
+### decompressTarxz()(buf)
 
-#### options.strip
+#### buf
 
-Type: `number`  
-Default: `0`
+Type: `Buffer`
 
-Remove leading directory components from extracted files.
+Buffer to decompress.
 
 
 ## License
