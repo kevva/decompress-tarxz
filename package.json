@@ -27,8 +27,9 @@
     "xz"
   ],
   "dependencies": {
-    "decompress-tar": "^4.0.0",
+    "decompress-tar": "^4.1.0",
     "file-type": "^3.8.0",
+    "is-stream": "^1.1.0",
     "lzma-native": "^1.0.2"
   },
   "devDependencies": {

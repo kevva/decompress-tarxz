@@ -1,16 +1,26 @@
 'use strict';
 const decompressTar = require('decompress-tar');
 const fileType = require('file-type');
+const isStream = require('is-stream');
 const lzmaNative = require('lzma-native');
 
-module.exports = () => buf => {
-	if (!Buffer.isBuffer(buf)) {
-		return Promise.reject(new TypeError(`Expected a Buffer, got ${typeof buf}`));
+module.exports = () => input => {
+	if (!Buffer.isBuffer(input) && !isStream(input)) {
+		return Promise.reject(new TypeError(`Expected a Buffer or Stream, got ${typeof input}`));
 	}
 
-	if (!fileType(buf) || fileType(buf).ext !== 'xz') {
+	if (Buffer.isBuffer(input) && (!fileType(input) || fileType(input).ext !== 'xz')) {
 		return Promise.resolve([]);
 	}
 
-	return lzmaNative.decompress(buf).then(decompressTar());
+	const decompressor = lzmaNative.createDecompressor();
+	const result = decompressTar()(decompressor);
+
+	if (Buffer.isBuffer(input)) {
+		decompressor.end(input);
+	} else {
+		input.pipe(decompressor);
+	}
+
+	return result;
 };

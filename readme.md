@@ -28,13 +28,15 @@ decompress('unicorn.tar.xz', 'dist', {
 
 ## API
 
-### decompressTarxz()(buf)
+### decompressTarxz()(input)
 
-#### buf
+Returns both a Promise for a Buffer and a [Duplex stream](https://nodejs.org/api/stream.html#stream_class_stream_duplex).
 
-Type: `Buffer`
+#### input
 
-Buffer to decompress.
+Type: `Buffer` `Stream`
+
+Buffer or stream to decompress.
 
 
 ## License
