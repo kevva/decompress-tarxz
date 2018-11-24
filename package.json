@@ -28,14 +28,14 @@
   ],
   "dependencies": {
     "decompress-tar": "^4.1.0",
-    "file-type": "^3.8.0",
+    "file-type": "^10.0.0",
     "is-stream": "^1.1.0",
-    "lzma-native": "^3.0.1"
+    "lzma-native": "^4.0.0"
   },
   "devDependencies": {
     "ava": "*",
-    "is-jpg": "^1.0.0",
-    "pify": "^2.3.0",
+    "is-jpg": "^2.0.0",
+    "pify": "^4.0.0",
     "xo": "*"
   }
 }
