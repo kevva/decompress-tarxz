@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save decompress-tarxz
+$ npm install decompress-tarxz
 ```
 
 
@@ -16,13 +16,15 @@ $ npm install --save decompress-tarxz
 const decompress = require('decompress');
 const decompressTarxz = require('decompress-tarxz');
 
-decompress('unicorn.tar.xz', 'dist', {
-	plugins: [
-		decompressTarxz()
-	]
-}).then(() => {
+(async () => {
+	await decompress('unicorn.tar.xz', 'dist', {
+		plugins: [
+			decompressTarxz()
+		]
+	});
+
 	console.log('Files decompressed');
-});
+})();
 ```
 
 
@@ -30,15 +32,10 @@ decompress('unicorn.tar.xz', 'dist', {
 
 ### decompressTarxz()(input)
 
-Returns both a Promise for a Buffer and a [Duplex stream](https://nodejs.org/api/stream.html#stream_class_stream_duplex).
+Returns both a `Promise<Buffer>` and a [Duplex stream](https://nodejs.org/api/stream.html#stream_class_stream_duplex).
 
 #### input
 
 Type: `Buffer` `Stream`
 
 Buffer or stream to decompress.
-
-
-## License
-
-MIT © [Kevin Mårtensson](https://github.com/kevva)

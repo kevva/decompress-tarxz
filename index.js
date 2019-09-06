@@ -4,19 +4,22 @@ const fileType = require('file-type');
 const isStream = require('is-stream');
 const lzmaNative = require('lzma-native');
 
-module.exports = () => input => {
-	if (!Buffer.isBuffer(input) && !isStream(input)) {
+module.exports = () => async input => {
+	const isBuffer = Buffer.isBuffer(input);
+	const type = isBuffer ? fileType(input) : null;
+
+	if (!isBuffer && !isStream(input)) {
 		return Promise.reject(new TypeError(`Expected a Buffer or Stream, got ${typeof input}`));
 	}
 
-	if (Buffer.isBuffer(input) && (!fileType(input) || fileType(input).ext !== 'xz')) {
+	if (isBuffer && (!type || type.ext !== 'xz')) {
 		return Promise.resolve([]);
 	}
 
 	const decompressor = lzmaNative.createDecompressor();
 	const result = decompressTar()(decompressor);
 
-	if (Buffer.isBuffer(input)) {
+	if (isBuffer) {
 		decompressor.end(input);
 	} else {
 		input.pipe(decompressor);

@@ -10,7 +10,7 @@
     "url": "https://github.com/kevva"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=8"
   },
   "scripts": {
     "test": "xo && ava"
@@ -28,14 +28,13 @@
   ],
   "dependencies": {
     "decompress-tar": "^4.1.0",
-    "file-type": "^3.8.0",
-    "is-stream": "^1.1.0",
-    "lzma-native": "^3.0.1"
+    "file-type": "^12.3.0",
+    "is-stream": "^2.0.0",
+    "lzma-native": "^4.0.5"
   },
   "devDependencies": {
-    "ava": "*",
-    "is-jpg": "^1.0.0",
-    "pify": "^2.3.0",
-    "xo": "*"
+    "ava": "^2.3.0",
+    "is-jpg": "^2.0.0",
+    "xo": "^0.24.0"
   }
 }
