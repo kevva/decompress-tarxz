@@ -30,7 +30,7 @@
     "decompress-tar": "^4.1.0",
     "file-type": "^12.3.0",
     "is-stream": "^2.0.0",
-    "lzma-native": "^4.0.5"
+    "lzma-native": "^8.0.1"
   },
   "devDependencies": {
     "ava": "^2.3.0",
